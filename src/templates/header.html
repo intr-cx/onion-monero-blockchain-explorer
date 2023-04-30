@@ -18,17 +18,50 @@
 <div>
 
     <div class="center">
-        <h1 class="center"><a href="/">Onion Monero Blockchain Explorer</a></h1>
-        <h4 style="font-size: 15px; margin: 0px">(no javascript - no cookies - no web analytics trackers - no images - open sourced)</h4>
-    </div>
-
-
-    <div class="center">
         <form action="/search" method="get" style="width:100%; margin-top:15px" class="style-1">
             <input type="text" name="value" size="120"
                    placeholder="block height, block hash, transaction hash">
             <input type="submit" value="Search">
         </form>
     </div>
+
+     <div id="tabs">
+
+        Server time: {{server_timestamp}}  | <a href="/txpool">Transaction pool</a>
+         {{#enable_pusher}}
+            | <a href="/rawtx">Transaction pusher </a>
+         {{/enable_pusher}}
+         {{#enable_key_image_checker}}
+            | <a href="/rawkeyimgs">Key images checker</a>
+         {{/enable_key_image_checker}}
+         {{#enable_output_key_checker}}
+            | <a href="/rawoutputkeys">Output keys checker</a>
+         {{/enable_output_key_checker}}
+         {{#enable_autorefresh_option}}
+             |
+            {{#refresh}}
+                <a href="/">Autorefresh is ON (10 s)</a>
+            {{/refresh}}
+            {{^refresh}}
+               <a href="/autorefresh">Autorefresh is OFF</a>
+            {{/refresh}}
+         {{/enable_autorefresh_option}}
+         {{#testnet_url}}
+            | <a href="{{testnet_url}}">Go to testnet explorer</a>
+         {{/testnet_url}}
+         {{#stagenet_url}}
+            | <a href="{{stagenet_url}}">Go to stagenet explorer</a>
+         {{/stagenet_url}}
+         {{#mainnet_url}}
+            | <a href="{{mainnet_url}}">Go to mainnet explorer</a>
+         {{/mainnet_url}}
+         {{#testnet}}
+            | This is <span style="color:#ff6b62">testnet</span> blockchain
+         {{/testnet}}
+         {{#stagenet}}
+            | This is <span style="color:#ff6b62">stagenet</span> blockchain
+         {{/stagenet}}
+
+     </div>
 
 </div>
